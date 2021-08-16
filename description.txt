@@ -1,0 +1,64 @@
+Thank you, NuovaPrime and Fargowilta for creating the original mod.
+
+All configs are off by default, make sure to turn the ones you want on.
+This randomizer mod lets you randomize many features of your game to create interesting playthroughs or even just chaos, some of the features that can be randomized include:
+
+
+NPC AI Randomization - Lets you randomize the AI of all enemies and creatures spawned, meaning you can have a bunny with bat AI or a demon eye with skeletron ai.
+
+Item & NPC Name Randomization - Randomizes the names of all items and npcs, creating some pretty wacky names.
+
+Item Stats Randomization - Randomizes the damage, knockback, use speed and projectile firing of all weapons, it tends to roll lower values than higher ones, so don't worry about balance.
+
+Item Sprites Randomization - Randomizes the sprites of all items to make one item have the sprite of a different item, so you can have a muramasa with the sprite of a mushroom.
+
+Item & NPC Sound Randomization - Randomizes the use sounds of items, and the hit and death sounds of npcs.
+
+Projectile AI Randomization - Randomizes the AI of all projectiles, creating some really odd projectiles.
+
+NPC Shop Randomization - Randomizing the shop contents and shop prices for all npc's that have them.
+
+NPC Loot Randomization - Makes all enemies drop a random item when killed.
+
+Worldgen Randomization - Randomizes every tile (that isn't from a biome) in the world upon worldgen.
+
+
+Everything rerandomizes whenever you reload your mods/game, so be warned of that.
+
+Changelog:
+
+V1.2.1
+
+1) Ported to tModLoader 0.12 (Journey's End) by TerraStag.
+
+V1.2.0
+
+1) Added the ability to make only bosses drop a random item, chest randomization, the ability to override immortality on enemies, as well as some meme settings for AI.
+2) Changed usetime randomization to also have a better chance to roll lower values.
+3) Split off randomized projectiles from item stats randomization into it's own config.
+4) Fixed a crash with item sprites randomization and the mod browser.
+5) Made the eternia portal and crystal part of the "important npc's" config option for AI randomization.
+6) Made most of the config options not force a reload.
+
+V1.1.1
+
+1) Fixed an issue preventing people from loading the mod after updating.
+
+V1.1.0
+
+1) Added randomization of npc shops, worldgen and npc loot.
+2) Added more options to npc ai randomization.
+3) Split name randomization into items and npcs.
+
+
+V1.0.3
+
+1) Made the mod multiplayer compatible, whoops.
+
+V1.0.2
+
+1) Made it so the item stat randomization doesn't apply to tools.
+
+Credits to Oli.H for making npc shop and worldgen randomization.
+Credits to fargowilta, the thorium discord and the tmodloader discord for giving me some ideas as I made this.
+Credit to catsounds for the mod icon.
