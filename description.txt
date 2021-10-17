@@ -27,9 +27,15 @@ Everything rerandomizes whenever you reload your mods/game, so be warned of that
 
 Changelog:
 
+V1.2.2
+
+1) Added an option to leave town NPCs with normal AI.
+2) Empress of Light is now a meme AI.
+3) Fixed item & NPC sound randomization.
+
 V1.2.1
 
-1) Ported to tModLoader 0.12 (Journey's End) by TerraStag.
+1) Ported to tModLoader 0.12 (Journey's End) by BlueStag.
 
 V1.2.0
 

@@ -76,12 +76,12 @@ namespace RandomizerMod
                 }
                 if (ModContent.GetInstance<RandomizerModConfig>().ItemSpritesRandomization)
                 {
-                    // Main.itemTexture[item.type] = Main.itemTexture[Main.rand.Next(ItemLoader.ItemCount)];
 					TextureAssets.Item[item.type] = TextureAssets.Item[Main.rand.Next(ItemLoader.ItemCount)];
 				}
                 if (ModContent.GetInstance<RandomizerModConfig>().SoundsRandomization)
                 {
-                    item.UseSound = Mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Item, "Item" + Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.Item)));
+                    // item.UseSound = Mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Item, "Item" + Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.Item)));
+                    item.UseSound = new LegacySoundStyle(SoundID.Item, Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.Item)));
                 }
             }
         }

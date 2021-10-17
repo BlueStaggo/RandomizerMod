@@ -96,6 +96,10 @@ namespace RandomizerMod
             [DefaultValue(false)]
             public bool enabled = false;
 
+            [Label("Randomization affects town NPCs?")]
+            [DefaultValue(false)]
+            public bool affectsTownNPCs = false;
+
             [Label("Randomization affects bosses?")]
             [DefaultValue(false)]
             public bool affectsBosses = false;
@@ -117,9 +121,9 @@ namespace RandomizerMod
         public class MemeAIRandomizations
         {
             [Label("AI Override")]
-            [Tooltip("Choose from a list of specific AI's that all npc's will become.")]
+            [Tooltip("Choose from a list of specific AIs that all NPCs will become.\nNote: this will affect all NPCs regardless of AI Randomization settings.")]
             [DrawTicks]
-            [OptionStrings(new string[] { "None", "Goldfish", "Spiky Ball", "Fishron", "Bird" })]
+            [OptionStrings(new string[] { "None", "Goldfish", "Spiky Ball", "Fishron", "Bird", "Empress of Light" })]
             [DefaultValue("None")]
             public string ForcedAI;
 

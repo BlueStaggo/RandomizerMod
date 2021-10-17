@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -67,30 +68,33 @@ namespace RandomizerMod
                     npc.aiStyle = Main.rand.Next(Main.npc.Length);
                 }
             }
+            if (npc.townNPC)
+            {
+                if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.affectsTownNPCs)
+                {
+                    npc.aiStyle = Main.rand.Next(Main.npc.Length);
+                }
+            }
             if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.enabled)
             {
-                //gross code incoming
                 string forcedAI = ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.MemeAIRandomizationSettings.ForcedAI;
                 if (forcedAI != "None")
-                {
-                    if (forcedAI == "Goldfish")
-                        npc.aiStyle = 16;
-                    else if (forcedAI == "Spiky Ball")
-                        npc.aiStyle = 20;
-                    //else if (forcedAI == "Pumpking")
-                        //npc.aiStyle = 59;
-                    else if (forcedAI == "Fishron")
-                        npc.aiStyle = 69;
-                    else if (forcedAI == "Bird")
-                        npc.aiStyle = 24;
-                }
-                else if (!npc.boss && !ImportantNPCs.Contains(npc.type))
+                    npc.aiStyle = forcedAI switch
+                    {
+                        "Goldfish" => 16,
+                        "Spiky Ball" => 20,
+                        "Fishron" => 69,
+                        "Bird" => 24,
+                        "Empress of Light" => 120,
+                        _ => npc.aiStyle
+                    };
+                else if (!ImportantNPCs.Contains(npc.type) && !npc.boss && !npc.townNPC)
                     npc.aiStyle = Main.rand.Next(Main.npc.Length);
             }
             if (ModContent.GetInstance<RandomizerModConfig>().SoundsRandomization)
             {
-                npc.HitSound = Mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCHit, "NPCHit" + Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.NPCHit)));
-                npc.DeathSound = Mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCKilled, "NPCDeath" + Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.NPCKilled)));
+                npc.HitSound = new LegacySoundStyle(SoundID.NPCHit, Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.NPCHit)));
+                npc.DeathSound = new LegacySoundStyle(SoundID.NPCKilled, Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.NPCKilled)));
             }
             if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.MemeAIRandomizationSettings.RandomSize)
             {
@@ -134,10 +138,10 @@ namespace RandomizerMod
             }
         }
 
-		public override bool PreKill(NPC npc)
-		{
-			return true;
-		}
+        public override bool PreKill(NPC npc)
+        {
+            return true;
+        }
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
@@ -147,33 +151,33 @@ namespace RandomizerMod
                 {
                     if (npc.boss)
                     {
-						npcLoot.RemoveWhere(rule => rule is IItemDropRule);
-					}
+                        npcLoot.RemoveWhere(rule => rule is IItemDropRule);
+                    }
                 }
                 else
                 {
-					npcLoot.RemoveWhere(rule => rule is IItemDropRule);
+                    npcLoot.RemoveWhere(rule => rule is IItemDropRule);
                 }
             }
         }
 
-		public override void OnKill(NPC npc)
-		{
-			if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.enabled)
-			{
-				if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.bossesOnly)
-				{
-					if (npc.boss)
-					{
-						Item.NewItem(npc.position, Main.rand.Next(ItemLoader.ItemCount));
-					}
-				}
-				else
-				{
-					Item.NewItem(npc.position, Main.rand.Next(ItemLoader.ItemCount));
-				}
-			}
-		}
+        public override void OnKill(NPC npc)
+        {
+            if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.enabled)
+            {
+                if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.bossesOnly)
+                {
+                    if (npc.boss)
+                    {
+                        Item.NewItem(npc.position, Main.rand.Next(ItemLoader.ItemCount));
+                    }
+                }
+                else
+                {
+                    Item.NewItem(npc.position, Main.rand.Next(ItemLoader.ItemCount));
+                }
+            }
+        }
 
         public override void PostAI(NPC npc)
         {
