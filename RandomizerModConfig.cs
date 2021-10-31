@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
 namespace RandomizerMod
@@ -15,7 +9,7 @@ namespace RandomizerMod
 
         [Label("NPC AI Randomization Settings")]
         [Tooltip("Configure the randomization of ai for all npcs.")]
-        public AIRandomizations AIRandomizationSettings = new AIRandomizations();
+        public AIRandomizations AIRandomizationSettings = new();
 
         [Label("Item Name Randomization")]
         [Tooltip("Toggle the randomization of names for all items.")]
@@ -61,7 +55,7 @@ namespace RandomizerMod
 
         [Label("NPC Loot Randomization")]
         [Tooltip("Configure the randomization of extra drops from enemies.")]
-        public NPCLootRandomizations NPCLootRandomization = new NPCLootRandomizations();
+        public NPCLootRandomizations NPCLootRandomization = new();
 
         [Label("Chest Contents Randomization")]
         [Tooltip("Toggle the randomization of items in all generated chests.")]
@@ -114,7 +108,7 @@ namespace RandomizerMod
 
             [Label("Meme AI Settings")]
             [Tooltip("Choose from a few meme options for AI, you are welcome hectic.")]
-            public MemeAIRandomizations MemeAIRandomizationSettings = new MemeAIRandomizations();
+            public MemeAIRandomizations MemeAIRandomizationSettings = new();
         }
 
         [SeparatePage]

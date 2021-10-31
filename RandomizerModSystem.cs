@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace RandomizerMod
 {
@@ -33,7 +28,7 @@ namespace RandomizerMod
                                 {
                                     if(!Main.tileFrameImportant[Main.tile[x, y].type])
                                     {
-                                        WorldGen.TileRunner(x, y, (double)WorldGen.genRand.Next(1, 8), WorldGen.genRand.Next(1, 8), id, false, 0f, 0f, false, true);
+                                        WorldGen.TileRunner(x, y, WorldGen.genRand.Next(1, 8), WorldGen.genRand.Next(1, 8), id, false, 0f, 0f, false, true);
                                     }
                                 }
                             }
@@ -44,13 +39,13 @@ namespace RandomizerMod
             if (ModContent.GetInstance<RandomizerModConfig>().ChestsRandomization)
             {
                 int chestcontentamount = Main.rand.Next(1, 40);
-                List<int> chestitems = new List<int>();
+                List<int> chestitems = new();
                 int[] chestarray;
-                Item item = new Item();
+                Item item = new();
                 for (int i = 0; i < ItemLoader.ItemCount; i++)
                 {
                     item.SetDefaults(i);
-                    if (item.type != 0)
+                    if (item.type != ItemID.None)
                     {
                         chestitems.Add(i);
                     }

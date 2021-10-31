@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -80,8 +75,7 @@ namespace RandomizerMod
 				}
                 if (ModContent.GetInstance<RandomizerModConfig>().SoundsRandomization)
                 {
-                    // item.UseSound = Mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Item, "Item" + Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.Item)));
-                    item.UseSound = new LegacySoundStyle(SoundID.Item, Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.Item)));
+                    item.UseSound = new LegacySoundStyle(SoundID.Item, Main.rand.Next(SoundEngine.LegacySoundPlayer.SoundItem.Length));
                 }
             }
         }

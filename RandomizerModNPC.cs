@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,7 +9,7 @@ namespace RandomizerMod
 {
     public class RandomizerModNPC : GlobalNPC
     {
-        internal static List<int> ImportantNPCs = new List<int>() { NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.CultistArcherBlue, NPCID.CultistDevote, NPCID.CultistTablet, NPCID.VoodooDemon, NPCID.DD2EterniaCrystal, NPCID.DD2LanePortal };
+        internal static List<int> ImportantNPCs = new() { NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.CultistArcherBlue, NPCID.CultistDevote, NPCID.CultistTablet, NPCID.VoodooDemon, NPCID.DD2EterniaCrystal, NPCID.DD2LanePortal };
         public override void SetDefaults(NPC npc)
         {
             base.SetDefaults(npc);
@@ -93,8 +89,8 @@ namespace RandomizerMod
             }
             if (ModContent.GetInstance<RandomizerModConfig>().SoundsRandomization)
             {
-                npc.HitSound = new LegacySoundStyle(SoundID.NPCHit, Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.NPCHit)));
-                npc.DeathSound = new LegacySoundStyle(SoundID.NPCKilled, Main.rand.Next(SoundLoader.SoundCount(Terraria.ModLoader.SoundType.NPCKilled)));
+                npc.HitSound = new LegacySoundStyle(SoundID.NPCHit, Main.rand.Next(SoundEngine.LegacySoundPlayer.SoundNpcHit.Length));
+                npc.DeathSound = new LegacySoundStyle(SoundID.NPCKilled, Main.rand.Next(SoundEngine.LegacySoundPlayer.SoundNpcKilled.Length));
             }
             if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.MemeAIRandomizationSettings.RandomSize)
             {
@@ -102,16 +98,16 @@ namespace RandomizerMod
             }
         }
 
-        public void RandomiseShops(Chest shop, ref int nextSlot)
+        public static void RandomiseShops(Chest shop, ref int nextSlot)
         {
             int numberitems = Main.rand.Next(1, 40);
-            List<int> itemlist = new List<int>();
+            List<int> itemlist = new();
             int[] itemarray;
-            Item item = new Item();
+            Item item = new();
             for (int i = 0; i < ItemLoader.ItemCount; i++)
             {
                 item.SetDefaults(i);
-                if (item.type != 0)
+                if (item.type != ItemID.None)
                 {
                     itemlist.Add(i);
                 }
@@ -151,12 +147,12 @@ namespace RandomizerMod
                 {
                     if (npc.boss)
                     {
-                        npcLoot.RemoveWhere(rule => rule is IItemDropRule);
+                        npcLoot.RemoveWhere(rule => rule is not null);
                     }
                 }
                 else
                 {
-                    npcLoot.RemoveWhere(rule => rule is IItemDropRule);
+                    npcLoot.RemoveWhere(rule => rule is not null);
                 }
             }
         }
