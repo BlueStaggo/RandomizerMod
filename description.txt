@@ -27,10 +27,14 @@ Everything rerandomizes whenever you reload your mods/game, so be warned of that
 
 Changelog:
 
+V1.2.2.2:
+1) Updated to .NET 6.0.
+2) Fixed world generation bug.
+
 V1.2.2.1:
 
-1) Fixed missing method issue
-2) Cleaned up code
+1) Fixed missing method issue.
+2) Cleaned up code.
 
 V1.2.2
 

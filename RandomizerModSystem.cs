@@ -26,7 +26,7 @@ namespace RandomizerMod
                             {
                                 if (y > 40 && y < Main.maxTilesY - 40 && x > 40 && x < Main.maxTilesX - 40)
                                 {
-                                    if(!Main.tileFrameImportant[Main.tile[x, y].type])
+                                    if(!Main.tileFrameImportant[Main.tile[x, y].TileType])
                                     {
                                         WorldGen.TileRunner(x, y, WorldGen.genRand.Next(1, 8), WorldGen.genRand.Next(1, 8), id, false, 0f, 0f, false, true);
                                     }
@@ -54,7 +54,7 @@ namespace RandomizerMod
                 for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
                 {
                     Chest chest = Main.chest[chestIndex];
-                    if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers)
+                    if (chest != null && Main.tile[chest.x, chest.y].TileType == TileID.Containers)
                     {
                         for (int inventoryIndex = 0; inventoryIndex < chestcontentamount; inventoryIndex++)
                         {
