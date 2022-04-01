@@ -59,8 +59,6 @@ namespace RandomizerMod
                     if (tile.TileType != TileID.Containers || chest.item == null)
                         continue;
 
-                    RandomizerMod.Instance.Logger.Info("We got a chest!");
-
                     var maxContent = Main.rand.Next(1, 40);
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
