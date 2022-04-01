@@ -8,8 +8,12 @@ namespace RandomizerMod
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
         [Label("NPC AI Randomization Settings")]
-        [Tooltip("Configure the randomization of ai for all npcs.")]
-        public AIRandomizations AIRandomizationSettings = new();
+        [Tooltip("Configure the randomization of AI for all NPCs.")]
+        public AIRandomizations AIRandomizationSettings { get; private set; } = new();
+
+        [Label("NPC Loot Randomization")]
+        [Tooltip("Configure the randomization of extra drops from enemies.")]
+        public NPCLootRandomizations NPCLootRandomization { get; private set; } = new();
 
         [Label("Item Name Randomization")]
         [Tooltip("Toggle the randomization of names for all items.")]
@@ -17,7 +21,7 @@ namespace RandomizerMod
         public bool ItemNameRandomization { get; set; }
 
         [Label("NPC Name Randomization")]
-        [Tooltip("Toggle the randomization of names for all npcs.")]
+        [Tooltip("Toggle the randomization of names for all NPCs.")]
         [DefaultValue(false)]
         public bool NPCNameRandomization { get; set; }
 
@@ -43,19 +47,15 @@ namespace RandomizerMod
         public bool SoundsRandomization { get; set; }
 
         [Label("Projectile AI Randomization")]
-        [Tooltip("Toggle the randomization of ai for all projectiles.")]
+        [Tooltip("Toggle the randomization of AI for all projectiles.")]
         [DefaultValue(false)]
         public bool ProjAIRandomization { get; set; }
 
         [Label("Town NPC Shop Randomization")]
-        [Tooltip("Toggle the randomization of shops for all npcs.")]
+        [Tooltip("Toggle the randomization of shops for all NPCs.")]
         [DefaultValue(false)]
         [ReloadRequired]
         public bool NPCShopRandomization { get; set; }
-
-        [Label("NPC Loot Randomization")]
-        [Tooltip("Configure the randomization of extra drops from enemies.")]
-        public NPCLootRandomizations NPCLootRandomization = new();
 
         [Label("Chest Contents Randomization")]
         [Tooltip("Toggle the randomization of items in all generated chests.")]
@@ -63,7 +63,7 @@ namespace RandomizerMod
         [ReloadRequired]
         public bool ChestsRandomization { get; set; }
 
-        [Header("[c/E61919:WARNING: Needs a beefy pc to use!]")]
+        [Header("[c/E61919:WARNING: May need a beefy pc to use!]")]
         [Label("World Generation Randomization")]
         [Tooltip("Toggles the randomization of all tiles generated in a world.")]
         [DefaultValue(false)]
@@ -74,41 +74,41 @@ namespace RandomizerMod
         [SeparatePage]
         public class NPCLootRandomizations
         {
-            [Label("All enemies drop random items?")]
+            [Label("Do all enemies drop random items?")]
             [DefaultValue(false)]
-            public bool enabled = false;
+            public bool Enabled { get; set; }
 
-            [Label("Only bosses drop random items?")]
+            [Label("Do only bosses drop random items?")]
             [DefaultValue(false)]
-            public bool bossesOnly = false;
+            public bool BossesOnly { get; set; }
         }
 
         [SeparatePage]
         public class AIRandomizations
         {
-            [Label("Randomization affects normal enemies?")]
+            [Label("Does randomization affects normal enemies?")]
             [DefaultValue(false)]
-            public bool enabled = false;
+            public bool Enabled { get; set; }
 
-            [Label("Randomization affects town NPCs?")]
+            [Label("Does randomization affects town NPCs?")]
             [DefaultValue(false)]
-            public bool affectsTownNPCs = false;
+            public bool AffectsTownNPCs { get; set; }
 
-            [Label("Randomization affects bosses?")]
+            [Label("Does randomization affects bosses?")]
             [DefaultValue(false)]
-            public bool affectsBosses = false;
+            public bool AffectsBosses { get; set; }
 
-            [Label("Randomization affects progression-important enemies?")]
+            [Label("Does randomization affects progression-important enemies?")]
             [DefaultValue(false)]
-            public bool affectsImportants = false;
+            public bool AffectsImportants { get; set; }
 
-            [Label("Override immortality on randomized enemies?")]
+            [Label("Should immortality on randomized enemies be overriden?")]
             [DefaultValue(false)]
-            public bool overridesImmortality = false;
+            public bool OverridesImmortality { get; set; }
 
             [Label("Meme AI Settings")]
             [Tooltip("Choose from a few meme options for AI, you are welcome hectic.")]
-            public MemeAIRandomizations MemeAIRandomizationSettings = new();
+            public MemeAIRandomizations MemeAIRandomizationSettings { get; private set; } = new();
         }
 
         [SeparatePage]
@@ -119,11 +119,12 @@ namespace RandomizerMod
             [DrawTicks]
             [OptionStrings(new string[] { "None", "Goldfish", "Spiky Ball", "Fishron", "Bird", "Empress of Light" })]
             [DefaultValue("None")]
-            public string ForcedAI;
+            public string ForcedAI { get; set; }
 
             [Label("Randomized Enemy Size")]
             [Tooltip("Randomize the size of all enemies between 0.1x and 3x")]
-            public bool RandomSize = false;
+            [DefaultValue(false)]
+            public bool RandomSize { get; set; }
         }
     }
 }

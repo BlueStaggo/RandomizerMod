@@ -53,26 +53,20 @@ namespace RandomizerMod
             }
             if (ImportantNPCs.Contains(npc.type))
             {
-                if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.affectsImportants)
-                {
+                if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.AffectsImportants)
                     npc.aiStyle = Main.rand.Next(Main.npc.Length);
-                }
             }
             if (npc.boss)
             {
-                if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.affectsBosses)
-                {
+                if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.AffectsBosses)
                     npc.aiStyle = Main.rand.Next(Main.npc.Length);
-                }
             }
             if (npc.townNPC)
             {
-                if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.affectsTownNPCs)
-                {
+                if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.AffectsTownNPCs)
                     npc.aiStyle = Main.rand.Next(Main.npc.Length);
-                }
             }
-            if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.enabled)
+            if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.Enabled)
             {
                 string forcedAI = ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.MemeAIRandomizationSettings.ForcedAI;
                 if (forcedAI != "None")
@@ -101,22 +95,20 @@ namespace RandomizerMod
 
         public static void RandomiseShops(Chest shop, ref int nextSlot)
         {
-            int numberitems = Main.rand.Next(1, 40);
-            List<int> itemlist = new();
-            int[] itemarray;
+            List<int> itemList = new();
             Item item = new();
             for (int i = 0; i < ItemLoader.ItemCount; i++)
             {
                 item.SetDefaults(i);
-                if (item.type != ItemID.None)
-                {
-                    itemlist.Add(i);
-                }
+                if (item.type != ItemID.None && item.type != ModContent.ItemType<Terraria.ModLoader.Default.UnloadedItem>())
+                    itemList.Add(i);
             }
-            itemarray = itemlist.ToArray();
-            for (int i = 0; i < numberitems; i++)
+            var itemArray = itemList.ToArray();
+
+            int maxItems = Main.rand.Next(1, 40);
+            for (int i = 0; i < maxItems; i++)
             {
-                shop.item[nextSlot].SetDefaults(Main.rand.Next(itemarray));
+                shop.item[nextSlot].SetDefaults(Main.rand.Next(itemArray));
                 shop.item[nextSlot].value = Main.rand.Next(1, 1000000);
                 nextSlot++;
             }
@@ -127,24 +119,17 @@ namespace RandomizerMod
             if (ModContent.GetInstance<RandomizerModConfig>().NPCShopRandomization)
             {
                 for (int i = 0; i < 40; i++)
-                {
                     shop.item[i].TurnToAir();
-                }
                 nextSlot = 0;
                 RandomiseShops(shop, ref nextSlot);
             }
         }
 
-        public override bool PreKill(NPC npc)
-        {
-            return true;
-        }
-
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.enabled)
+            if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.Enabled)
             {
-                if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.bossesOnly)
+                if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.BossesOnly)
                 {
                     if (npc.boss)
                     {
@@ -160,9 +145,9 @@ namespace RandomizerMod
 
         public override void OnKill(NPC npc)
         {
-            if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.enabled)
+            if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.Enabled)
             {
-                if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.bossesOnly)
+                if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.BossesOnly)
                 {
                     if (npc.boss)
                     {
@@ -179,7 +164,7 @@ namespace RandomizerMod
         public override void PostAI(NPC npc)
         {
             base.PostAI(npc);
-            if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.overridesImmortality)
+            if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.OverridesImmortality)
             {
                 if (npc.immortal || npc.dontTakeDamage || npc.dontTakeDamageFromHostiles)
                 {
