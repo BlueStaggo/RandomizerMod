@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace RandomizerMod
 {
@@ -38,34 +39,40 @@ namespace RandomizerMod
             }
             if (ModContent.GetInstance<RandomizerModConfig>().ChestsRandomization)
             {
-                int chestcontentamount = Main.rand.Next(1, 40);
-                List<int> chestitems = new();
-                int[] chestarray;
-                Item item = new();
+                List<int> chestItems = new();
+                Item testItem = new();
                 for (int i = 0; i < ItemLoader.ItemCount; i++)
                 {
-                    item.SetDefaults(i);
-                    if (item.type != ItemID.None)
-                    {
-                        chestitems.Add(i);
-                    }
+                    testItem.SetDefaults(i);
+                    if (testItem.type != ItemID.None && testItem.type != ModContent.ItemType<Terraria.ModLoader.Default.UnloadedItem>())
+                        chestItems.Add(i);
                 }
-                chestarray = chestitems.ToArray();
-                for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+                var chestArray = chestItems.ToArray();
+
+                for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
                 {
                     Chest chest = Main.chest[chestIndex];
-                    if (chest != null && Main.tile[chest.x, chest.y].TileType == TileID.Containers)
+                    if (chest is null || !WorldGen.InWorld(chest.x, chest.y, 42))
+                        continue;
+
+                    Tile tile = Main.tile[chest.x, chest.y];
+                    if (tile.TileType != TileID.Containers || chest.item == null)
+                        continue;
+
+                    RandomizerMod.Instance.Logger.Info("We got a chest!");
+
+                    var maxContent = Main.rand.Next(1, 40);
+                    for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
-                        for (int inventoryIndex = 0; inventoryIndex < chestcontentamount; inventoryIndex++)
+                        chest.item[inventoryIndex].TurnToAir();
+                        if (inventoryIndex < maxContent)
                         {
-                            chest.item[inventoryIndex].TurnToAir();
-                            int id = Main.rand.Next(chestarray);
-                            item.SetDefaults(id);
-                            int maxstack = item.maxStack;
-                            chest.item[inventoryIndex].SetDefaults(id);
-                            chest.item[inventoryIndex].stack = Main.rand.Next(1, maxstack);
+                            chest.item[inventoryIndex] = new Item();
+                            var chestItem = chest.item[inventoryIndex];
+                            chestItem.SetDefaults(Main.rand.NextFromList(chestArray));
+                            chestItem.stack = Main.rand.Next(1, chestItem.maxStack);
+                            chestItem.Prefix(-1);
                         }
-                        chestcontentamount = Main.rand.Next(1, 40);
                     }
                 }
             }

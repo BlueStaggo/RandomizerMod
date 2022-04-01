@@ -4,13 +4,16 @@ namespace RandomizerMod
 {
 	public class RandomizerMod : Mod
 	{
-		public RandomizerMod()
-		{
-		}
+		public static RandomizerMod Instance { get; private set; }
 
-        public override void PostSetupContent()
+        public override void Load()
         {
-            
+            Instance = this;
+        }
+
+        public override void Unload()
+        {
+            Instance = null;
         }
     }
 }

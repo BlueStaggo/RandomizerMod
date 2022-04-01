@@ -27,6 +27,9 @@ Everything rerandomizes whenever you reload your mods/game, so be warned of that
 
 Changelog:
 
+V1.2.2.3:
+1) Fixed chest item randomization
+
 V1.2.2.2:
 1) Updated to .NET 6.0.
 2) Fixed world generation bug.

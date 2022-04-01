@@ -2,6 +2,7 @@
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -165,12 +166,12 @@ namespace RandomizerMod
                 {
                     if (npc.boss)
                     {
-                        Item.NewItem(npc.position, Main.rand.Next(ItemLoader.ItemCount));
+                        Item.NewItem(new EntitySource_DropAsItem(npc), npc.position, Main.rand.Next(ItemLoader.ItemCount));
                     }
                 }
                 else
                 {
-                    Item.NewItem(npc.position, Main.rand.Next(ItemLoader.ItemCount));
+                    Item.NewItem(new EntitySource_DropAsItem(npc), npc.position, Main.rand.Next(ItemLoader.ItemCount));
                 }
             }
         }
