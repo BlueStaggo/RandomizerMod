@@ -1,4 +1,4 @@
-Thank you, NuovaPrime and Fargowilta for creating the original mod.
+NOTE: This is an unofficial port! NuovaPrime is able to ask for transferring ownership of this mod. Thank you, NuovaPrime and Fargowilta, for creating the original mod.
 
 All configs are off by default, make sure to turn the ones you want on.
 This randomizer mod lets you randomize many features of your game to create interesting playthroughs or even just chaos, some of the features that can be randomized include:
@@ -27,6 +27,12 @@ Everything rerandomizes whenever you reload your mods/game, so be warned of that
 
 Changelog:
 
+V1.2.3:
+1) Added recipe randomization.
+2) Fixed NPC AI randomization.
+
+The following versions were made before tModLoader 1.4's stable branch:
+
 V1.2.2.4:
 1) Removed "We got a chest!" log spam.
 
@@ -51,6 +57,8 @@ V1.2.2
 V1.2.1
 
 1) Ported to tModLoader 0.12 (Journey's End) by BlueStag.
+
+The following versions were made before BlueStag:
 
 V1.2.0
 

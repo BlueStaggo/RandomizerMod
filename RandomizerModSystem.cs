@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
+using System.Linq;
 
 namespace RandomizerMod
 {
@@ -72,6 +72,26 @@ namespace RandomizerMod
                             chestItem.Prefix(-1);
                         }
                     }
+                }
+            }
+        }
+
+        public override void PostAddRecipes()
+        {
+            if (ModContent.GetInstance<RandomizerModConfig>().RecipeRandomization)
+            {
+                for (int i = 0; i < Recipe.numRecipes; i++)
+                {
+                    var recipe = Main.recipe[i];
+
+                    var newId = Main.rand.Next(ItemLoader.ItemCount);
+                    if (newId == 0 || newId == ModContent.ItemType<Terraria.ModLoader.Default.UnloadedItem>())
+                        newId = 1;
+
+                    recipe.createItem = new Item();
+                    recipe.createItem.SetDefaults(newId);
+                    recipe.createItem.stack = Main.rand.Next(1, recipe.createItem.maxStack);
+                    recipe.createItem.Prefix(-1);
                 }
             }
         }

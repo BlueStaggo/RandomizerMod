@@ -60,6 +60,10 @@ namespace RandomizerMod
                         item.useTime = Main.rand.Next(10, 20) + (Main.rand.Next(2) == 0 ? (Main.rand.Next(10, 40) + (Main.rand.Next(2) == 0 ? Main.rand.Next(10, 40) : 0)) : 0);
                         item.crit = Main.rand.Next(0, 100);
                     }
+                    else if (item.defense > 0)
+                    {
+                        item.defense = Main.rand.Next(10, 60) + (Main.rand.Next(2) == 0 ? (Main.rand.Next(20, 100) + (Main.rand.Next(2) == 0 ? Main.rand.Next(40, 200) : 0)) : 0);
+                    }
                 }
                 if (ModContent.GetInstance<RandomizerModConfig>().RandomProjRandomization)
                 {

@@ -9,11 +9,11 @@ namespace RandomizerMod
 
         [Label("NPC AI Randomization Settings")]
         [Tooltip("Configure the randomization of AI for all NPCs.")]
-        public AIRandomizations AIRandomizationSettings { get; private set; } = new();
+        public AIRandomizations AIRandomizationSettings { get; init; } = new();
 
         [Label("NPC Loot Randomization")]
         [Tooltip("Configure the randomization of extra drops from enemies.")]
-        public NPCLootRandomizations NPCLootRandomization { get; private set; } = new();
+        public NPCLootRandomizations NPCLootRandomization { get; init; } = new();
 
         [Label("Item Name Randomization")]
         [Tooltip("Toggle the randomization of names for all items.")]
@@ -63,13 +63,18 @@ namespace RandomizerMod
         [ReloadRequired]
         public bool ChestsRandomization { get; set; }
 
+        [Label("Recipe Randomization")]
+        [Tooltip("Toggle the randomization of recipes.")]
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool RecipeRandomization { get; set; }
+
         [Header("[c/E61919:WARNING: May need a beefy pc to use!]")]
         [Label("World Generation Randomization")]
         [Tooltip("Toggles the randomization of all tiles generated in a world.")]
         [DefaultValue(false)]
         [ReloadRequired]
         public bool WorldGenRandomization { get; set; }
-
 
         [SeparatePage]
         public class NPCLootRandomizations
@@ -86,19 +91,19 @@ namespace RandomizerMod
         [SeparatePage]
         public class AIRandomizations
         {
-            [Label("Does randomization affects normal enemies?")]
+            [Label("Does randomization affect normal enemies?")]
             [DefaultValue(false)]
             public bool Enabled { get; set; }
 
-            [Label("Does randomization affects town NPCs?")]
+            [Label("Does randomization affect town NPCs?")]
             [DefaultValue(false)]
             public bool AffectsTownNPCs { get; set; }
 
-            [Label("Does randomization affects bosses?")]
+            [Label("Does randomization affect bosses?")]
             [DefaultValue(false)]
             public bool AffectsBosses { get; set; }
 
-            [Label("Does randomization affects progression-important enemies?")]
+            [Label("Does randomization affect progression-important enemies?")]
             [DefaultValue(false)]
             public bool AffectsImportants { get; set; }
 
@@ -108,7 +113,7 @@ namespace RandomizerMod
 
             [Label("Meme AI Settings")]
             [Tooltip("Choose from a few meme options for AI, you are welcome hectic.")]
-            public MemeAIRandomizations MemeAIRandomizationSettings { get; private set; } = new();
+            public MemeAIRandomizations MemeAIRandomizationSettings { get; init; } = new();
         }
 
         [SeparatePage]

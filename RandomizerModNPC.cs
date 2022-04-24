@@ -54,17 +54,17 @@ namespace RandomizerMod
             if (ImportantNPCs.Contains(npc.type))
             {
                 if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.AffectsImportants)
-                    npc.aiStyle = Main.rand.Next(Main.npc.Length);
+                    npc.aiStyle = Main.rand.Next(123);
             }
             if (npc.boss)
             {
                 if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.AffectsBosses)
-                    npc.aiStyle = Main.rand.Next(Main.npc.Length);
+                    npc.aiStyle = Main.rand.Next(123);
             }
             if (npc.townNPC)
             {
                 if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.AffectsTownNPCs)
-                    npc.aiStyle = Main.rand.Next(Main.npc.Length);
+                    npc.aiStyle = Main.rand.Next(123);
             }
             if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.Enabled)
             {
@@ -80,7 +80,7 @@ namespace RandomizerMod
                         _ => npc.aiStyle
                     };
                 else if (!ImportantNPCs.Contains(npc.type) && !npc.boss && !npc.townNPC)
-                    npc.aiStyle = Main.rand.Next(Main.npc.Length);
+                    npc.aiStyle = Main.rand.Next(123);
             }
             if (ModContent.GetInstance<RandomizerModConfig>().SoundsRandomization)
             {
