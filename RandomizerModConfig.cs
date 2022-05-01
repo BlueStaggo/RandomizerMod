@@ -11,10 +11,6 @@ namespace RandomizerMod
         [Tooltip("Configure the randomization of AI for all NPCs.")]
         public AIRandomizations AIRandomizationSettings { get; init; } = new();
 
-        [Label("NPC Loot Randomization")]
-        [Tooltip("Configure the randomization of extra drops from enemies.")]
-        public NPCLootRandomizations NPCLootRandomization { get; init; } = new();
-
         [Label("Item Name Randomization")]
         [Tooltip("Toggle the randomization of names for all items.")]
         [DefaultValue(false)]
@@ -68,6 +64,11 @@ namespace RandomizerMod
         [DefaultValue(false)]
         [ReloadRequired]
         public bool RecipeRandomization { get; set; }
+
+        [Label("NPC Loot Randomization")]
+        [Tooltip("Toggle the randomization of extra drops from enemies.")]
+        [DefaultValue(false)]
+        public bool NPCLootRandomization { get; set; }
 
         [Header("[c/E61919:WARNING: May need a beefy pc to use!]")]
         [Label("World Generation Randomization")]

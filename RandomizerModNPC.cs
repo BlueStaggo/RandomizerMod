@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -127,38 +128,14 @@ namespace RandomizerMod
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.Enabled)
-            {
-                if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.BossesOnly)
-                {
-                    if (npc.boss)
-                    {
-                        npcLoot.RemoveWhere(rule => rule is not null);
-                    }
-                }
-                else
-                {
-                    npcLoot.RemoveWhere(rule => rule is not null);
-                }
-            }
+            if (RandomizerMod.Config.NPCLootRandomization)
+                npcLoot.RemoveWhere(rule => rule is not null);
         }
 
         public override void OnKill(NPC npc)
         {
-            if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.Enabled)
-            {
-                if (ModContent.GetInstance<RandomizerModConfig>().NPCLootRandomization.BossesOnly)
-                {
-                    if (npc.boss)
-                    {
-                        Item.NewItem(new EntitySource_DropAsItem(npc), npc.position, Main.rand.Next(ItemLoader.ItemCount));
-                    }
-                }
-                else
-                {
-                    Item.NewItem(new EntitySource_DropAsItem(npc), npc.position, Main.rand.Next(ItemLoader.ItemCount));
-                }
-            }
+            if (RandomizerMod.Config.NPCLootRandomization)
+                Item.NewItem(new EntitySource_Death(npc), npc.position, Vector2.Zero, Main.rand.Next(ItemLoader.ItemCount));
         }
 
         public override void PostAI(NPC npc)

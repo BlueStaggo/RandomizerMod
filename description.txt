@@ -23,9 +23,13 @@ NPC Loot Randomization - Makes all enemies drop a random item when killed.
 Worldgen Randomization - Randomizes every tile (that isn't from a biome) in the world upon worldgen.
 
 
-Everything rerandomizes whenever you reload your mods/game, so be warned of that.
+Everything rerandomizes whenever you reload your mods/game and there is the chance that your game can get softlocked, so be warned of that.
 
 Changelog:
+
+V1.2.3.1:
+1) Fixed NPC loot randomization.
+2) Randomization of boss loot only has been removed. Therefore, NPC loot randomization is no longer a separate page.
 
 V1.2.3:
 1) Added recipe randomization.
