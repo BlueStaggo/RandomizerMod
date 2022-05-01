@@ -7,9 +7,7 @@ namespace RandomizerMod
     {
         public override void SetDefaults(Projectile projectile)
         {
-            base.SetDefaults(projectile);
-
-            if (ModContent.GetInstance<RandomizerModConfig>().ProjAIRandomization)
+            if (RandomizerMod.Config.ProjAIRandomization)
                 projectile.aiStyle = Main.rand.Next(ProjectileLoader.ProjectileCount);
         }
     }

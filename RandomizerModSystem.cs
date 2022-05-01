@@ -10,7 +10,7 @@ namespace RandomizerMod
     {
         public override void PostWorldGen()
         {
-            if (ModContent.GetInstance<RandomizerModConfig>().WorldGenRandomization)
+            if (RandomizerMod.Config.WorldGenRandomization)
             {
                 for (int x = 0; x < Main.maxTilesX; x++)
                 {
@@ -37,7 +37,7 @@ namespace RandomizerMod
                     }
                 }
             }
-            if (ModContent.GetInstance<RandomizerModConfig>().ChestsRandomization)
+            if (RandomizerMod.Config.ChestsRandomization)
             {
                 List<int> chestItems = new();
                 Item testItem = new();
@@ -78,7 +78,7 @@ namespace RandomizerMod
 
         public override void PostAddRecipes()
         {
-            if (ModContent.GetInstance<RandomizerModConfig>().RecipeRandomization)
+            if (RandomizerMod.Config.RecipeRandomization)
             {
                 for (int i = 0; i < Recipe.numRecipes; i++)
                 {

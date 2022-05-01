@@ -14,7 +14,7 @@ namespace RandomizerMod
             if (!Main.dedServ && !Main.gameMenu)
             {
                 base.SetDefaults(item);
-                if (ModContent.GetInstance<RandomizerModConfig>().ItemNameRandomization)
+                if (RandomizerMod.Config.ItemNameRandomization)
                 {
                     string name1 = Lang.GetItemNameValue(Main.rand.Next(ItemLoader.ItemCount));
                     if (name1.Contains(' '))
@@ -51,7 +51,7 @@ namespace RandomizerMod
                     }
 
                 }
-                if (ModContent.GetInstance<RandomizerModConfig>().StatsRandomization)
+                if (RandomizerMod.Config.StatsRandomization)
                 {
                     if (item.damage > 1 && item.pick == 0 && item.axe == 0 && item.hammer == 0)
                     {
@@ -65,7 +65,7 @@ namespace RandomizerMod
                         item.defense = Main.rand.Next(10, 60) + (Main.rand.Next(2) == 0 ? (Main.rand.Next(20, 100) + (Main.rand.Next(2) == 0 ? Main.rand.Next(40, 200) : 0)) : 0);
                     }
                 }
-                if (ModContent.GetInstance<RandomizerModConfig>().RandomProjRandomization)
+                if (RandomizerMod.Config.RandomProjRandomization)
                 {
                     if (item.damage > 1 && item.pick == 0 && item.axe == 0 && item.hammer == 0)
                     {
@@ -73,11 +73,11 @@ namespace RandomizerMod
                         item.shootSpeed = Main.rand.NextFloat(5f, 30f);
                     }
                 }
-                if (ModContent.GetInstance<RandomizerModConfig>().ItemSpritesRandomization)
+                if (RandomizerMod.Config.ItemSpritesRandomization)
                 {
 					TextureAssets.Item[item.type] = TextureAssets.Item[Main.rand.Next(ItemLoader.ItemCount)];
 				}
-                if (ModContent.GetInstance<RandomizerModConfig>().SoundsRandomization)
+                if (RandomizerMod.Config.SoundsRandomization)
                 {
                     item.UseSound = new LegacySoundStyle(SoundID.Item, Main.rand.Next(SoundEngine.LegacySoundPlayer.SoundItem.Length));
                 }
