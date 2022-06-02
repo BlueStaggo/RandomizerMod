@@ -77,10 +77,6 @@ namespace RandomizerMod
                 {
 					TextureAssets.Item[item.type] = TextureAssets.Item[Main.rand.Next(ItemLoader.ItemCount)];
 				}
-                if (RandomizerMod.Config.SoundsRandomization)
-                {
-                    item.UseSound = new LegacySoundStyle(SoundID.Item, Main.rand.Next(SoundEngine.LegacySoundPlayer.SoundItem.Length));
-                }
             }
         }
     }

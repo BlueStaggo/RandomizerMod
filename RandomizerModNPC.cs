@@ -83,11 +83,6 @@ namespace RandomizerMod
                 else if (!ImportantNPCs.Contains(npc.type) && !npc.boss && !npc.townNPC)
                     npc.aiStyle = Main.rand.Next(123);
             }
-            if (ModContent.GetInstance<RandomizerModConfig>().SoundsRandomization)
-            {
-                npc.HitSound = new LegacySoundStyle(SoundID.NPCHit, Main.rand.Next(SoundEngine.LegacySoundPlayer.SoundNpcHit.Length));
-                npc.DeathSound = new LegacySoundStyle(SoundID.NPCKilled, Main.rand.Next(SoundEngine.LegacySoundPlayer.SoundNpcKilled.Length));
-            }
             if (ModContent.GetInstance<RandomizerModConfig>().AIRandomizationSettings.MemeAIRandomizationSettings.RandomSize)
             {
                 npc.scale = Main.rand.NextFloat(0.1f, 3f);

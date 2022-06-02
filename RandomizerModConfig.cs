@@ -37,11 +37,6 @@ namespace RandomizerMod
         [ReloadRequired]
         public bool ItemSpritesRandomization { get; set; }
 
-        [Label("NPC & Item Sounds Randomization")]
-        [Tooltip("Toggle the randomization of sounds for all items and npcs.")]
-        [DefaultValue(false)]
-        public bool SoundsRandomization { get; set; }
-
         [Label("Projectile AI Randomization")]
         [Tooltip("Toggle the randomization of AI for all projectiles.")]
         [DefaultValue(false)]

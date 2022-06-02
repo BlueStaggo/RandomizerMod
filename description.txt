@@ -27,6 +27,9 @@ Everything rerandomizes whenever you reload your mods/game and there is the chan
 
 Changelog:
 
+V1.2.3.2:
+1) Removed sound randomization.
+
 V1.2.3.1:
 1) Fixed NPC loot randomization.
 2) Randomization of boss loot only has been removed. Therefore, NPC loot randomization is no longer a separate page.

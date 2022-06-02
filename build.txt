@@ -1,4 +1,4 @@
 displayName = Terraria Randomizer Mod
 author = BlueStag (OG: NuovaPrime & Fargowilta)
-version = 1.2.3.1
+version = 1.2.3.2
 homepage = https://github.com/BlueStaggo/RandomizerMod
