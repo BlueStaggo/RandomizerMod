@@ -12,8 +12,6 @@ Item Stats Randomization - Randomizes the damage, knockback, use speed and proje
 
 Item Sprites Randomization - Randomizes the sprites of all items to make one item have the sprite of a different item, so you can have a muramasa with the sprite of a mushroom.
 
-Item & NPC Sound Randomization - Randomizes the use sounds of items, and the hit and death sounds of npcs.
-
 Projectile AI Randomization - Randomizes the AI of all projectiles, creating some really odd projectiles.
 
 NPC Shop Randomization - Randomizing the shop contents and shop prices for all npc's that have them.
