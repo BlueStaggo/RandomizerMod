@@ -1,0 +1,188 @@
+RandomizerModConfig: {
+	DisplayName: Randomizer Mod Config
+	Headers.ReloadWarning: Note: This mod may need to be reloaded for changes to take effect.
+
+	ItemRandomization: {
+		Label: Item Randomization
+		Tooltip: ""
+	}
+
+	ProjectileRandomization: {
+		Label: Projectile Randomization
+		Tooltip: ""
+	}
+
+	NPCRandomization: {
+		Label: NPC Randomization
+		Tooltip: ""
+	}
+
+	WorldRandomization: {
+		Label: World Randomization
+		Tooltip: ""
+	}
+}
+
+ItemRandomizations: {
+	ItemNameRandomization: {
+		Label: Item Name Randomization
+		Tooltip: Toggle the randomization of names for all items.
+	}
+
+	ItemSpritesRandomization: {
+		Label: Item Sprites Randomization
+		Tooltip: Toggle the randomization of sprites for all items.
+	}
+
+	RecipeRandomization: {
+		Label: Recipe Randomization
+		Tooltip: Toggle the randomization of recipes.
+	}
+
+	StatsRandomization: {
+		Label: Weapon Stats Randomization
+		Tooltip: Toggle the randomization of stats for all weapons.
+	}
+
+	PlacedTileRandomization: {
+		Label: Tile Drops Randomization
+		Tooltip: Toggle the randomization of placed and dropped tiles.
+	}
+
+	PlacedWallRandomization: {
+		Label: Wall Drops Randomization
+		Tooltip: Toggle the randomization of placed and dropped walls.
+	}
+
+	Tooltip: ""
+}
+
+NPCRandomizations: {
+	AIRandomization: {
+		Label: AI Randomization Settings
+		Tooltip: ""
+	}
+
+	NameRandomization: {
+		Label: Name Randomization
+		Tooltip: Toggle the randomization of names for all NPCs.
+	}
+
+	ItemDropsRandomization: {
+		Label: Enemy Loot Randomization
+		Tooltip: Toggle the randomization of drops from enemies.
+	}
+
+	BossDropsRandomization: {
+		Label: Boss Loot Randomization
+		Tooltip: Toggle the randomization of drops from bosses.
+	}
+
+	ShopRandomization: {
+		Label: Town NPC Shop Randomization
+		Tooltip: Toggle the randomization of shops for all NPCs.
+	}
+
+	Tooltip: ""
+}
+
+WorldRandomizations: {
+	ChestsRandomization: {
+		Label: Chest Contents Randomization
+		Tooltip: Toggle the randomization of items in all generated chests.
+	}
+
+	TileRandomization: {
+		Label: Tile Randomization
+		Tooltip:
+			'''
+			Toggles the randomization of all tiles generated in a world.
+			Note: Worlds created with this option enabled may lag, softlock or crash the game.
+			'''
+	}
+
+	Tooltip: ""
+}
+
+ProjectileRandomizations: {
+	ItemProjRandomization: {
+		Label: Random Weapon Projectiles
+		Tooltip: Toggle the randomization of projectiles that each weapon fires.
+	}
+
+	ShootSpeedRandomization: {
+		Label: Random Shooting Speed
+		Tooltip: Toggle the randomization of shooting speed of all items.
+	}
+
+	AIRandomization: {
+		Label: Projectile AI Randomization
+		Tooltip: Toggle the randomization of AI for all projectiles.
+	}
+
+	CopyAI: {
+		Label: Copy AI
+		Tooltip:
+			'''
+			Copy an AI from a selected projectile to every projectile affected by settings.
+			Set to Nothing to disable copied AI.
+			'''
+	}
+
+	Tooltip: ""
+}
+
+NPCAIRandomizations: {
+	Enabled: {
+		Label: Randomize NPC AI
+		Tooltip: Does randomization affect normal enemies?
+	}
+
+	AffectsTownNPCs: {
+		Label: Randomize Town NPC AI
+		Tooltip: Does randomization affect town NPCs?
+	}
+
+	AffectsBosses: {
+		Label: Randomize Boss AI
+		Tooltip: Does randomization affect bosses?
+	}
+
+	AffectsImportants: {
+		Label: Randomize Important NPC AI
+		Tooltip: Does randomization affect progression-important enemies?
+	}
+
+	OverridesImmortality: {
+		Label: Override Immortality
+		Tooltip: Should immortality on randomized enemies be overriden?
+	}
+
+	ShuffleAI: {
+		Label: Shuffle AI
+		Tooltip: Should AI be different per NPC type rather than per every individual NPC?
+	}
+
+	RandomSize: {
+		Label: Randomized NPC Size
+		Tooltip: Randomize the size of all enemies between 0.1x and 3x
+	}
+
+	CopyAI: {
+		Label: Copy AI
+		Tooltip:
+			'''
+			Copy an AI from a selected NPC to every NPC affected by settings.
+			Set to Nothing to disable copied AI.
+			'''
+	}
+
+	Tooltip: ""
+}
+
+RandomMode: {
+	Off.Label: Off
+	Shuffle.Label: Shuffle
+	Randomize.Label: Randomize
+	Tooltip: ""
+}

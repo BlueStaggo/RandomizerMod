@@ -1,0 +1,9 @@
+Mods: {
+	RandomizerMod: {
+		Items: {
+			StaggoMask.DisplayName: Staggo Mask
+			StaggoPants.DisplayName: Staggo Pants
+			StaggoShirt.DisplayName: Staggo Shirt
+		}
+	}
+}
