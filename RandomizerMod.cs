@@ -26,9 +26,9 @@ public class RandomizerMod : Mod
 
     public void InitializeShuffleMaps()
     {
-        ItemShuffleMap = new(Main.rand, Enumerable.Range(1, ItemLoader.ItemCount).ToList());
-        TileShuffleMap = new(Main.rand, Enumerable.Range(0, TileLoader.TileCount).ToList());
-        WallShuffleMap = new(Main.rand, Enumerable.Range(1, WallLoader.WallCount).ToList());
+        ItemShuffleMap = new(Main.rand, Enumerable.Range(1, ItemLoader.ItemCount).Where(x => x != ModContent.ItemType<UnloadedItem>()).ToList());
+        TileShuffleMap = new(Main.rand, Enumerable.Range(0, TileLoader.TileCount).Where(x => x != ModContent.TileType<UnloadedTile>()).ToList());
+        WallShuffleMap = new(Main.rand, Enumerable.Range(1, WallLoader.WallCount).Where(x => x != ModContent.WallType<UnloadedWall>()).ToList());
         ProjectileShuffleMap = new(Main.rand, Enumerable.Range(0, ProjectileLoader.ProjectileCount).ToList());
         ProjectileAIShuffleMap = new(Main.rand, Enumerable.Range(0, 196).ToList());
         NPCAIShuffleMap = new(Main.rand, Enumerable.Range(0, 126).ToList());
@@ -44,7 +44,7 @@ public class RandomizerMod : Mod
     {
         int item;
         do item = Main.rand.Next(1, ItemLoader.ItemCount - 1);
-        while (item != ModContent.ItemType<UnloadedItem>());
+        while (item == ModContent.ItemType<UnloadedItem>());
         return item;
     }
 
@@ -52,7 +52,7 @@ public class RandomizerMod : Mod
     {
         int tile;
         do tile = Main.rand.Next(1, TileLoader.TileCount - 1);
-        while (tile != ModContent.TileType<UnloadedTile>());
+        while (tile == ModContent.TileType<UnloadedTile>());
         return tile;
     }
 
@@ -60,7 +60,7 @@ public class RandomizerMod : Mod
     {
         int wall;
         do wall = Main.rand.Next(1, WallLoader.WallCount - 1);
-        while (wall != ModContent.WallType<UnloadedWall>());
+        while (wall == ModContent.WallType<UnloadedWall>());
         return wall;
     }
 }

@@ -4,6 +4,9 @@ The Terraria Randomizer Mod randomizes many aspects of the game to create intere
 
 Changelog:
 
+v1.3.0.1:
+- Fixed shop randomization.
+
 v1.3:
 - Updated to tModLoader 1.4.4.
 - Recategorized all options.

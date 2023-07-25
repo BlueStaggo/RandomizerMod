@@ -100,11 +100,11 @@ public class RandomizerModNPC : GlobalNPC
     {
         if (RandomizerMod.Config.NPCRandomization.ShopRandomization)
         {
-            Array.Fill(items, null);
+            Array.Fill(items, new Item(0));
             int maxItems = Main.rand.Next(1, 40);
             for (int i = 0; i < maxItems; i++)
             {
-                items[i] = new();
+                items[i] = new Item();
                 items[i].SetDefaults(RandomizerMod.GetRandomItem());
                 items[i].value = Main.rand.Next(1, 1000000);
             }
